@@ -13,7 +13,7 @@ public class Check {
     public String example() {
         Scanner scanner = new Scanner(System.in);
 
-        String example = "10+2+1*10";
+        String example = "10/0";
 //String example;
 //        while (true){
 //            System.out.println("Введите пример");
@@ -26,4 +26,6 @@ public class Check {
 //        }}
         return example;
     }
+
+
 }

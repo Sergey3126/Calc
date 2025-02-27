@@ -32,10 +32,10 @@ public class CalculatorWithMathCopy implements ICalculator {
      * @return
      */
     public double division(double division1, double division2) {
-        double result = 0;
-        if (division2 != 0) {
-            result = division1 / division2;
+        if (division2 == 0) {
+            throw new ArithmeticException("Деление на ноль");
         }
+        double  result = division1 / division2;
         return result;
     }
 
@@ -70,10 +70,10 @@ public class CalculatorWithMathCopy implements ICalculator {
      * @return
      */
     public double sqrt(double sqrt1) {
-        double result = 0;
-        if (sqrt1 > 0) {
-            result = Math.sqrt(sqrt1);
+        if (sqrt1 < 0) {
+            throw new ArithmeticException();
         }
+        double  result = Math.sqrt(sqrt1);
         return result;
     }
 
