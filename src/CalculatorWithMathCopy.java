@@ -33,7 +33,8 @@ public class CalculatorWithMathCopy implements ICalculator {
      */
     public double division(double division1, double division2) {
         if (division2 == 0) {
-            throw new ArithmeticException("Деление на ноль");
+            System.out.println("Деление на 0");
+            System.exit(0);
         }
         double  result = division1 / division2;
         return result;
@@ -71,7 +72,8 @@ public class CalculatorWithMathCopy implements ICalculator {
      */
     public double sqrt(double sqrt1) {
         if (sqrt1 < 0) {
-            throw new ArithmeticException();
+            System.out.println("Корень только из положительного числа");
+            System.exit(0);
         }
         double  result = Math.sqrt(sqrt1);
         return result;

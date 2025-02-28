@@ -3,8 +3,19 @@ public class CalculatorWithMathCopyMain {
     public static void main(String[] args) {
         Operations operations = new Operations();
         Check check = new Check();
-        String example = check.example();
+//        String example;
+//        while (true){
+//            System.out.println("Введите пример");
+//            System.out.println("Для помощи введите-Помощь");
+//         example = scanner.next();
+//        if (example.toLowerCase().equals("помощь")) {
+//            System.out.println("Запрещены буквы. Список доступных операторов: 1.+(сложение) 2.-(вычитание) 3.*(умножить) 4./(деление) 5.^(степень)");
+//        }else {
+//            break;
+//        }}
+        String example = "2*(-4)";
         example = example.replaceAll("[\\n\\s]", "");//убирает пробел и обзац
+check.checkExpression(example);
         System.out.println(example);
         while (check.result(example)) {
             example = operations.arithmetic(example);
