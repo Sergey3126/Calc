@@ -1,8 +1,16 @@
+import java.util.Arrays;
+import java.util.List;
+import java.util.Stack;
+import java.util.regex.Pattern;
 
 public class CalculatorWithMathCopyMain {
     public static void main(String[] args) {
-        Operations operations = new Operations();
+        Operator operator = new Operator();
         Check check = new Check();
+        Index index = new Index();
+        List<Character> operations = Arrays.asList('(', '|');
+        Pattern pattern1 = Pattern.compile("[+\\-*^()|/]");
+        Pattern pattern2 = Pattern.compile("[+*^()|/]");
 //        String example;
 //        while (true){
 //            System.out.println("Введите пример");
@@ -13,12 +21,29 @@ public class CalculatorWithMathCopyMain {
 //        }else {
 //            break;
 //        }}
-        String example = "2*(-4)";
+        String example = "-10+5";
         example = example.replaceAll("[\\n\\s]", "");//убирает пробел и обзац
-check.checkExpression(example);
+        check.checkExpression(example);
         System.out.println(example);
-        while (check.result(example)) {
-            example = operations.arithmetic(example);
+
+        while (check.result(example, pattern1)) {
+            if (!check.result(example,pattern2)){
+                break;
+            }
+            if (operator.operatorPriority(example, operations)) {
+                int openIndex = example.lastIndexOf('(');
+                int closeIndex = example.indexOf(')',openIndex);
+                String newExample = example.substring(openIndex + 1, closeIndex);
+                while (check.result(newExample, pattern1)) {
+                    newExample = operator.arithmetic(newExample);
+                }
+                StringBuilder sb = new StringBuilder(example);
+                sb.replace(openIndex, closeIndex + 1, newExample);
+                example = sb.toString();
+            } else {
+                example = operator.arithmetic(example);
+            }
+
             System.out.println(example);
         }
     }
