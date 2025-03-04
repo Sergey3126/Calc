@@ -14,10 +14,8 @@ public class Limiters {
         int closeIndex = example.indexOf(')',openIndex);
         String newExample = example.substring(openIndex + 1, closeIndex);
         while (check.result(newExample, pattern1)) {
-            if (!check.result(newExample,pattern2)){//если остался только минус
-                if (!operator.checkOperatorPriority(newExample,minus)) {//если отрицательно число
+            if (!check.result(newExample,pattern2) && !operator.checkOperatorPriority(newExample,minus)){ //если отрицательно число
                     break;
-                }
             }
             newExample = arithmetic.arithmetic(newExample);
         }
