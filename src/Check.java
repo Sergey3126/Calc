@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 public class Check {
     public boolean result(String example, Pattern pattern) {
         Matcher matcher = pattern.matcher(example);
-        return matcher.find();//наличие оператора
+        return matcher.find();//наличие операторов
     }
 
     public void checkExpression(String example) {
@@ -21,7 +21,7 @@ public class Check {
             }
             // Проверка на наличие рядом стоящих операторов
             if (operators.contains(String.valueOf(c))) {
-                if (i > 0 && operators.contains(String.valueOf(example.charAt(i - 1)))) {
+                if (i > 0 && operators.contains(String.valueOf(example.charAt(i - 1))) || i == 0 && operators.contains(String.valueOf(example.charAt(i)))) {
                     if (c != '-') {
                         System.out.println("Недопустимая последовательность операторов");
                         System.exit(0);

@@ -14,6 +14,13 @@ public class Index {
                     break;
                 }
                 if (example.charAt(i) == operation.get(j)) {
+                    if (example.charAt(i) == '-') {
+                        if (!Character.isDigit(example.charAt(i - 1))) {//если отрицательно число
+                            indexStart = i;
+                            condition = false;
+                            break;
+                        }
+                    }
                     indexStart = i + 1;
                     condition = false;
                     break;
@@ -27,13 +34,16 @@ public class Index {
     public int indexEnd(String example, int indexOperation, List<Character> operation) {
         int indexEnd = -1;
         boolean condition = true;
+        if (example.charAt(indexOperation + 1) == '-') {
+            indexOperation = indexOperation + 1;
+        }
         for (int i = indexOperation + 1; i < example.length() && condition; i++) {//конец примера
             for (int j = 0; j < operation.size(); j++) {
                 if (i == example.length() - 1) {//если  конец
                     indexEnd = example.length() - 1;
                     condition = false;
                     break;
-                } else if (example.charAt(i) == operation.get(j)) {
+                } else if (example.charAt(i) == operation.get(j)) {//если отрицательно число
                     indexEnd = i - 1;
                     condition = false;
                     break;
@@ -50,10 +60,15 @@ public class Index {
             indexOperation = 0;
             while (true) {
                 indexOperation = example.indexOf(operations.get(i), indexOperation + 1);
-
                 if (indexOperation != -1) {
                     indexOperations.add(indexOperation);
-                } else  {
+                    if (example.charAt(indexOperation) == '-') {
+                        if (!Character.isDigit(example.charAt(indexOperation - 1))) {//если отрицательно число
+                            indexOperations.remove(indexOperations.size() - 1);
+                        }
+                    }
+
+                } else {
                     break;
                 }
             }
