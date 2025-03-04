@@ -2,6 +2,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
+
+/**
+ * обработка скобок
+ */
 public class Limiters {
     public String brackets(String example){
         Arithmetic arithmetic = new Arithmetic();

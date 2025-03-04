@@ -4,6 +4,11 @@ import java.util.*;
 public class Operator {
 
 
+    /**
+     * оператор который проверяем
+     * @param example
+     * @return
+     */
     public List<Character> checkOperator(String example) {//приоритетный оператор
         List<Character> operations1 = Arrays.asList('^');
         if (checkOperatorPriority(example, operations1)) {
@@ -21,6 +26,12 @@ public class Operator {
         return null;
     }
 
+    /**
+     * проверка есть ли оператор
+     * @param example
+     * @param operations
+     * @return
+     */
     public boolean checkOperatorPriority(String example, List<Character> operations) {//наличие приоритетного оператора
         for (int i = 0; i < operations.size(); i++) {
             int indexOperation = example.indexOf(operations.get(i), 1);

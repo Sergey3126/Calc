@@ -2,11 +2,25 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Check {
+
+
+    /**
+     *  проверка на наличие
+     * @param example
+     * @param pattern
+     * @return
+     */
     public boolean result(String example, Pattern pattern) {
         Matcher matcher = pattern.matcher(example);
         return matcher.find();//наличие операторов
     }
 
+
+
+    /**
+     * Проверка на правильность ввода
+     * @param example
+     */
     public void checkExpression(String example) {
         String operators = "+-*/^"; // разрешенные операторы
         String limiters = "()|";    // разрешенные ограничители

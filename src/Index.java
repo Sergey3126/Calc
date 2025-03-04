@@ -1,8 +1,17 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
+/*
+получение индексов начала и конца выражения и индекс оператора
+ */
 public class Index {
+    /**
+     * индекс начала
+     * @param example
+     * @param indexOperation
+     * @param operation
+     * @return
+     */
     public int indexStart(String example, int indexOperation, List<Character> operation) {
         int indexStart = -1;
         boolean condition = true;
@@ -31,6 +40,13 @@ public class Index {
         return indexStart;
     }
 
+    /**
+     * индекс конца
+     * @param example
+     * @param indexOperation
+     * @param operation
+     * @return
+     */
     public int indexEnd(String example, int indexOperation, List<Character> operation) {
         int indexEnd = -1;
         boolean condition = true;
@@ -53,6 +69,12 @@ public class Index {
         return indexEnd;
     }
 
+    /**
+     * индекс оператора
+     * @param example
+     * @param operations
+     * @return
+     */
     public int indexOperation(String example, List<Character> operations) {
         List<Integer> indexOperations = new ArrayList<>();//индекс  оператора
         int indexOperation = 0;

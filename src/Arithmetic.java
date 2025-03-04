@@ -1,7 +1,13 @@
 import java.util.Arrays;
 import java.util.List;
 
+
 public class Arithmetic {
+    /**
+     * полученеи чисел и счет
+     * @param example
+     * @return
+     */
     public String arithmetic(String example) {
         Operator operator = new Operator();
         CalculatorWithMathCopy calc = new CalculatorWithMathCopy();
@@ -17,7 +23,7 @@ public class Arithmetic {
         int indexEnd = index.indexEnd(example, indexOperation, operators);
         if (indexOperation != -1) {
             try {//перевод числа
-                String num = example.substring(indexStart, indexOperation);
+                String num = example.substring(indexStart, indexOperation);//получение чисел
                 num1 = Double.parseDouble(num);
                 num = example.substring(indexOperation + 1, indexEnd + 1);
                 num2 = Double.parseDouble(num);
