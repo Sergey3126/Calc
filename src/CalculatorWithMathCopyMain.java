@@ -22,14 +22,19 @@ public class CalculatorWithMathCopyMain {
 //            break;
 //        }}
        //-((2 ^ 3) + (100 - (5 * (3 + 2)))) / (2 + 3) - (15 - (2 ^ (2 + (10 / 5))))+((10 + 2) * (3 - 1)) ^ 2 / 4 + (2 * (5 + (3 ^ 2) - (12 / 3)))
-        String example = "|2+3|*5+||-2+3|+5|" ;
+        String example = "||6-5|+(|10-5|-|10+10|)|" ;
         example = example.replaceAll("[\\n\\s]", "");//убирает пробел и обзац
         check.checkExpression(example);//проверка
         System.out.println(example);
 
         while (check.result(example, pattern)) {//счет пока есть операторы
+
             if (operator.checkOperatorPriority(example, operations)) {
-                example = limiters.brackets(example);
+                if (example.indexOf('(')!=-1){
+                    example = limiters.brackets(example);
+                } else if (example.indexOf('|')!=-1){
+                    example = limiters.module(example);
+                }
             } else {
                 example = arithmetic.arithmetic(example);
             }
