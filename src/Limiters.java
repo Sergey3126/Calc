@@ -51,7 +51,7 @@ public class Limiters {
         return index;
     }
 
-    public String limit(String expression, int openIndex, int closeIndex) {
+    public String replacement(String expression, int openIndex, int closeIndex) {
         Check check = new Check();
         Pattern pattern1 = Pattern.compile("[+\\-*^()|/]");
         Pattern pattern2 = Pattern.compile("[+*^()|/]");
@@ -90,13 +90,13 @@ public class Limiters {
                 closeIndex = moduleIndex.get(1);
             }
 
-            return this.limit(expression, openIndex, closeIndex);
+            return this.replacement(expression, openIndex, closeIndex);
         } else if (expression.indexOf('|') != -1) {
             moduleIndex = module(expression);
-            return limit(expression, moduleIndex.get(0), moduleIndex.get(1));
+            return replacement(expression, moduleIndex.get(0), moduleIndex.get(1));
         } else if (expression.indexOf('(') != -1) {
            bracketsIndex = brackets(expression, 0);
-            return limit(expression, bracketsIndex.get(0), bracketsIndex.get(1));
+            return replacement(expression, bracketsIndex.get(0), bracketsIndex.get(1));
         } else {
             return expression;
         }
