@@ -1,7 +1,13 @@
 
+import api.IOperatorsPriority;
+import operatorsPriority.AllOperators;
+
+
 import java.util.*;
 
 public class Operator {
+    private AllOperators allOperators = new AllOperators();
+    private List<IOperatorsPriority> operatorsPriorityList = allOperators.getOperatorsPriorityList();
 
 
     /**
@@ -10,17 +16,14 @@ public class Operator {
      * @return
      */
     public List<Character> checkOperator(String example) {//приоритетный оператор
-        List<Character> operations1 = Arrays.asList('^');
-        if (checkOperatorPriority(example, operations1)) {
-            return operations1;
-        }
-        List<Character> operations2 = Arrays.asList('*', '/');
-        if (checkOperatorPriority(example, operations2)) {
-            return operations2;
-        }
-        List<Character> operations3 = Arrays.asList('+', '-');
-        if (checkOperatorPriority(example, operations3)) {
-            return operations3;
+        //вот тут заменил на фор
+
+        for (int i = 0; i < operatorsPriorityList.size(); i++) {
+            List<Character> operations = operatorsPriorityList.get(i).getListOperators();
+
+            if (checkOperatorPriority(example, operations)) {
+                return operations;
+            }
         }
         System.exit(0);
         return null;

@@ -1,68 +1,6 @@
+public class CalculatorWithMathCopy  {
 
-public class CalculatorWithMathCopy implements ICalculator {
-    /**
-     * вычитание
-     *
-     * @param minus1
-     * @param minus2
-     * @return
-     */
-    public double minus(double minus1, double minus2) {
-        double result = minus1 - minus2;
-        return result;
-    }
 
-    /**
-     * сложение
-     *
-     * @param plus1
-     * @param plus2
-     * @return
-     */
-    public double sum(double plus1, double plus2) {
-        double plus = plus1 + plus2;
-        return plus;
-    }
-
-    /**
-     * деление
-     *
-     * @param division1
-     * @param division2
-     * @return
-     */
-    public double division(double division1, double division2) {
-        if (division2 == 0) {
-            System.out.println("Деление на 0");
-            System.exit(0);
-        }
-        double result = division1 / division2;
-        return result;
-    }
-
-    /**
-     * умножение
-     *
-     * @param multiplication1
-     * @param multiplication2
-     * @return
-     */
-    public double multiplication(double multiplication1, double multiplication2) {
-        double result = multiplication1 * multiplication2;
-        return result;
-    }
-
-    /**
-     * степень
-     *
-     * @param pow1
-     * @param pow2
-     * @return
-     */
-    public double pow(double pow1, int pow2) {
-        double result = Math.pow(pow1, pow2);
-        return result;
-    }
 
     /**
      * корень
